@@ -68,7 +68,7 @@ remote_file "/tmp/postgresql-9.2.4.tar.gz" do
 end
 
 execute "install-postgresql" do
-    command "tar zxvf postgresql-9.2.4.tar.gz -C /tmp/ && cd /tmp/postgresql-9.2.4 && ./configure && make && make install"
+    command "tar zxvf /tmp/postgresql-9.2.4.tar.gz -C /tmp/ && cd /tmp/postgresql-9.2.4 && ./configure && make && make install"
 end
 
 execute "setup-postgresql" do
