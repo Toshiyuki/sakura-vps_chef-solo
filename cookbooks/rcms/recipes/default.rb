@@ -5,17 +5,17 @@
 package "epel" do
     action :install
     not_if "rpm -q epel-release"
-    source http://ftp-srv2.kddilabs.jp/Linux/distributions/fedora/epel/6/x86_64/epel-release-6-7.noarch.rpm
+    source "http://ftp-srv2.kddilabs.jp/Linux/distributions/fedora/epel/6/x86_64/epel-release-6-7.noarch.rpm"
 end
 package "remi" do
     action :install
     not_if "rpm -q remi-release"
-    source http://rpms.famillecollet.com/enterprise/remi-release-6.rpmm
+    source "http://rpms.famillecollet.com/enterprise/remi-release-6.rpmm"
 end
 package "nginx" do
     action :install
     not_if "rpm -q nginx"
-    source http://nginx.org/packages/centos/5/noarch/RPMS/nginx-release-centos-5-0.el5.ngx.noarch.rpm
+    source "http://nginx.org/packages/centos/5/noarch/RPMS/nginx-release-centos-5-0.el5.ngx.noarch.rpm"
 end
 
 #
