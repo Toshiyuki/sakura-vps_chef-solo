@@ -1,0 +1,5 @@
+maintainer       "Kenta Katoh"
+maintainer_email "kenta@diverta.co.jp"
+license          "Apache 2.0"
+description      ""
+version          "0.1"
