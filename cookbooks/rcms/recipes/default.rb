@@ -64,7 +64,7 @@ end
 end
 
 remote_file "/tmp/postgresql-9.2.4.tar.gz" do
-    source "ftp://ftp2.jp.postgresql.org/pub/postgresql/source/v9.2.4/postgresql-9.2.4.tar.gz"
+    source "http://ftp.postgresql.org/pub/source/v9.2.4/postgresql-9.2.4.tar.gz"
 end
 
 execute "install-postgresql" do
