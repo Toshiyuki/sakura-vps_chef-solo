@@ -20,7 +20,6 @@
     php-dom
     php-devel
     php-pecl-apc
-    php-eaccelerator
     php-pdo
     php-xml
     php-pear
