@@ -8,7 +8,6 @@
 %w{
     wget
     crontabs
-    vixie-cron
     pcre-devel
     php
     httpd
@@ -42,6 +41,7 @@
     xpdf
     s3cmd
     sysstat
+    vixie-cron
 }.each do |pkgname|
     package "#{pkgname}" do
         action :install
