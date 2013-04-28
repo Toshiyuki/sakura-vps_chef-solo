@@ -89,12 +89,11 @@ end
 
 git "/tmp/phantomjs" do
     repository "git://github.com/ariya/phantomjs.git"
-    reference "1.9"
-    action :sync
+    action :clone
 end
 
 execute "install-phantomjs" do
-    command "cd /tmp/ && bzip2 -dc phantomjs-1.9.0-linux-x86_64.tar.bz2 | tar zxvf -  && cd phantomjs-1.9.0-linux-x86_64 && ./build.sh --confirm"
+    command "cd /tmp/phantomjs && ./build.sh --confirm"
 end
 
 
@@ -105,6 +104,9 @@ service "httpd" do
     action [ :enable , :restart ]
 end
 
+service "postgresql" do
+    action [ :enable , :restart ]
+end
 
 
 
