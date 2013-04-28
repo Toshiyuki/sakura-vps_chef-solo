@@ -89,7 +89,7 @@ end
 
 git "/tmp/phantomjs" do
     repository "git://github.com/ariya/phantomjs.git"
-    action :clone
+    action :sync
 end
 
 execute "install-phantomjs" do
