@@ -10,7 +10,7 @@ end
 package "remi" do
     action :install
     not_if "rpm -q remi-release"
-    source "http://rpms.famillecollet.com/enterprise/remi-release-6.rpmm"
+    source "http://rpms.famillecollet.com/enterprise/remi-release-6.rpm"
 end
 package "nginx" do
     action :install
