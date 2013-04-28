@@ -28,7 +28,7 @@ git "/tmp/phantomjs" do
 end
 
 execute "install-phantomjs" do
-    command "cd /tmp/phantomjs && ./build.sh --confirm"
+    command "cd /tmp/phantomjs && ./build.sh --confirm && cd rpm && ./mkrpm.sh phantomjs "
 end
 
 
