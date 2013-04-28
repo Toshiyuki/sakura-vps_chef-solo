@@ -64,7 +64,7 @@ end
     php-mcrypt
     php-pecl-memcache
     libgcj
-    java-1.4.2-gcj-compat
+    java-gcj-compat
     postfix
     automake
     libtool
