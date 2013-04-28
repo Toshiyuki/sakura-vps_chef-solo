@@ -103,7 +103,7 @@ remote_file "/tmp/IPAexfont00103.zip" do
     source "http://ossipedia.ipa.go.jp/ipafont/IPAexfont00103.php"
 end
 execute "install-IPAexfont" do
-    command "unzip /tmp/IPAexfont00103.zip && cp /tmp/IPAexfont00103/*ttf /usr/share/fonts/"
+    command "unzip /tmp/IPAexfont00103.zip -d /tmp/ && cp /tmp/IPAexfont00103/*ttf /usr/share/fonts/"
 end
 
 #pdftk
