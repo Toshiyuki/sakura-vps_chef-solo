@@ -88,6 +88,7 @@ end
 
 git "/tmp/phantomjs" do
     repository "git://github.com/ariya/phantomjs.git"
+    revision "1.9"
     action :sync
 end
 
