@@ -4,6 +4,7 @@ run_list(
   "recipe[sshd]",
   "recipe[iptables]",
   "recipe[rcms]",
+  "recipe[phantomjs]",
 )
 
 default_attributes({
