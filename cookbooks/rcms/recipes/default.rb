@@ -2,20 +2,32 @@
 # php
 #
 
+remote_file "/tmp/epel-release-6-8.noarch.rpm" do
+    source "http://ftp-srv2.kddilabs.jp/Linux/distributions/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm"
+end
 package "epel-release" do
     action :install
     not_if "rpm -q epel-release"
-    source "http://ftp-srv2.kddilabs.jp/Linux/distributions/fedora/epel/6/x86_64/epel-release-6-7.noarch.rpm"
+    source "/tmp/epel-release-6-8.noarch.rpm"
 end
+
+remote_file "/tmp/remi-release-6.rpm" do
+    source "http://rpms.famillecollet.com/enterprise/remi-release-6.rpm"
+end
+
 package "remi-release" do
     action :install
     not_if "rpm -q remi-release"
-    source "http://rpms.famillecollet.com/enterprise/remi-release-6.rpm"
+    source "/tmp/remi-release-6.rpm"
+end
+
+remote_file "/tmp/nginx-release-centos-6-0.el6.ngx.noarch.rpm" do
+    source "http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm"
 end
 package "nginx" do
     action :install
     not_if "rpm -q nginx"
-    source "http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm"
+    source "/tmp/nginx-release-centos-6-0.el6.ngx.noarch.rpm"
 end
 
 #
