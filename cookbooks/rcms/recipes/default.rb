@@ -75,17 +75,16 @@ end
     end
 end
 
-remote_file "/tmp/postgresql-9.2.4.tar.gz" do
-    source "http://ftp.postgresql.org/pub/source/v9.2.4/postgresql-9.2.4.tar.gz"
+remote_file "/tmp/pgdg-centos92-9.2-6.noarch.rpm" do
+    source "http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm"
 end
 
-execute "install-postgresql" do
-    command "cd /tmp/ && tar zxvf postgresql-9.2.4.tar.gz && cd postgresql-9.2.4 && ./configure && make && make install"
+package "yum.postgresql.org" do
+    action :install
+    not_if "rpm -q yum.postgresql.org"
+    source "/tmp/pgdg-centos92-9.2-6.noarch.rpm"
 end
 
-execute "setup-postgresql" do
-    command "cp /tmp/postgresql-9.2.4/contrib/start-scripts/linux /etc/init.d/postgresql && chmod 755 /etc/init.d/postgresql"
-end
 
 git "/tmp/phantomjs" do
     repository "git://github.com/ariya/phantomjs.git"
