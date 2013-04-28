@@ -25,7 +25,6 @@ package "remi-release" do
 end
 
 cookbook_file "/etc/yum.repos.d/remi.repo" do
-    backup true
     source "remi.repo"
 end
 
