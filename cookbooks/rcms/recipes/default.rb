@@ -37,6 +37,22 @@ package "nginx" do
     source "/tmp/nginx-release-centos-6-0.el6.ngx.noarch.rpm"
 end
 
+#PostgreSQL
+remote_file "/tmp/pgdg-centos92-9.2-6.noarch.rpm" do
+    source "http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm"
+end
+
+package "yum.postgresql.org" do
+    action :install
+    not_if "rpm -q yum.postgresql.org"
+    source "/tmp/pgdg-centos92-9.2-6.noarch.rpm"
+end
+
+#after repo add
+execute "yum upgrade -y" do
+    command "yum upgrade -y"
+end
+
 #
 # Package install
 #
@@ -48,6 +64,9 @@ end
     php
     httpd
     mod_ssl
+    php-cli
+    php-common
+    php-pdo
     php-pgsql
     php-mysql
     php-mbstring
@@ -56,7 +75,6 @@ end
     php-dom
     php-devel
     php-pecl-apc
-    php-pdo
     php-xml
     php-pear
     php-soap
@@ -87,24 +105,14 @@ end
     end
 end
 
-#PostgreSQL
-remote_file "/tmp/pgdg-centos92-9.2-6.noarch.rpm" do
-    source "http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm"
-end
 
-package "yum.postgresql.org" do
-    action :install
-    not_if "rpm -q yum.postgresql.org"
-    source "/tmp/pgdg-centos92-9.2-6.noarch.rpm"
-end
-
-#IPA Fonts
-remote_file "/tmp/IPAexfont00103.zip" do
-    source "http://ossipedia.ipa.go.jp/ipafont/IPAexfont00103.php"
-end
-execute "install-IPAexfont" do
-    command "unzip /tmp/IPAexfont00103.zip -d /tmp/ && cp /tmp/IPAexfont00103/*ttf /usr/share/fonts/"
-end
+#IPA Fonts 落ちてる、、
+#remote_file "/tmp/IPAexfont00103.zip" do
+#    source "http://ossipedia.ipa.go.jp/ipafont/IPAexfont00103.php"
+#end
+#execute "install-IPAexfont" do
+#    command "unzip /tmp/IPAexfont00103.zip -d /tmp/ && cp /tmp/IPAexfont00103/*ttf /usr/share/fonts/"
+#end
 
 #pdftk
 remote_file "/tmp/pdftk-1.44-2.el6.rf.x86_64.rpm" do
