@@ -28,6 +28,7 @@ cookbook_file "/etc/yum.repos.d/remi.repo" do
     source "remi.repo"
 end
 
+#nginx
 remote_file "/tmp/nginx-release-centos-6-0.el6.ngx.noarch.rpm" do
     source "http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm"
 end
@@ -35,17 +36,6 @@ package "nginx" do
     action :install
     not_if "rpm -q nginx"
     source "/tmp/nginx-release-centos-6-0.el6.ngx.noarch.rpm"
-end
-
-#PostgreSQL
-remote_file "/tmp/pgdg-centos92-9.2-6.noarch.rpm" do
-    source "http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm"
-end
-
-package "yum.postgresql.org" do
-    action :install
-    not_if "rpm -q yum.postgresql.org"
-    source "/tmp/pgdg-centos92-9.2-6.noarch.rpm"
 end
 
 #after repo add
@@ -140,6 +130,7 @@ execute "install-ffmpeg" do
 end
 
 
+
 #
 # service
 #
@@ -147,9 +138,6 @@ service "httpd" do
     action [ :enable , :restart ]
 end
 
-service "postgresql" do
-    action [ :enable , :restart ]
-end
 
 
 

@@ -8,6 +8,7 @@ run_list(
   "recipe[powerdns]",
   "recipe[wordpress]",
   "recipe[rcms]",
+  "recipe[postgresql]",
   "recipe[phantomjs]",
 )
 

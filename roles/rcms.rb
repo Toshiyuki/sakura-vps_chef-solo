@@ -1,9 +1,10 @@
-name "wordpress"
-description "wordpress for SAKURA Internet VPS Server"
+name "rcms"
+description "rcms for SAKURA Internet VPS Server"
 run_list(
   "recipe[sshd]",
   "recipe[iptables]",
   "recipe[rcms]",
+  "recipe[postgresql]",
   "recipe[phantomjs]",
 )
 
