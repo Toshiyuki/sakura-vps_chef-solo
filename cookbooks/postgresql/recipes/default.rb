@@ -25,20 +25,25 @@ end
 
 user "postgres" do
     home "/home/postgres"
+    supports :manage_home=>true
     action :create
 end
+
 remote_file "/tmp/postgresql-9.2.4.tar.gz" do
     source "http://ftp.postgresql.org/pub/source/v9.2.4/postgresql-9.2.4.tar.gz"
 end
 execute "install-postgresql" do
     command "cd /tmp/ && tar zxvf postgresql-9.2.4.tar.gz && cd postgresql-9.2.4 && ./configure && make && make install"
 end
-execute "setting1-postgresql" do
-    command "cd /tmp/postgresql-9.2.4/ && cp contrib/start-scripts/linux /etc/init.d/postgresql && chmod 755 /etc/init.d/postgresql"
+
+cookbook_file "/tmp/setting-postgresql" do
+    source "setting-postgresql"
 end
-execute "setting2-postgresql" do
-    command "mkdir /usr/local/pgsql/data/ && chown postgres:postgres /usr/local/pgsql/data/ && su - postgres && /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data/ --no-locale -E UTF8 && exit"
+
+execute "setting-postgresql" do
+    command "sh /tmp/setting-postgresql"
 end
+
 
 #
 # service
