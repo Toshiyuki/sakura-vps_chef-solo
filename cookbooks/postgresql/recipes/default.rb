@@ -34,7 +34,7 @@ execute "install-postgresql" do
     command "cd /tmp/ && tar zxvf postgresql-9.2.4.tar.gz && cd postgresql-9.2.4 && ./configure && make && make install"
 end
 execute "setting1-postgresql" do
-    command "cd /tmp/postgresql-9.2.4/ && \cp contrib/start-scripts/linux /etc/init.d/postgresql && chmod 755 /etc/init.d/postgresql"
+    command "cd /tmp/postgresql-9.2.4/ && cp contrib/start-scripts/linux /etc/init.d/postgresql && chmod 755 /etc/init.d/postgresql"
 end
 execute "setting2-postgresql" do
     command "mkdir /usr/local/pgsql/data/ && chown postgres:postgres /usr/local/pgsql/data/ && su - postgres && /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data/ --no-locale -E UTF8 && exit"
