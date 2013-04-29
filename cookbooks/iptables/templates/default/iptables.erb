@@ -27,6 +27,10 @@
 -A INPUT -m state --state NEW -m tcp -p tcp --dport 8081 -j ACCEPT
 <% end -%>
 
+<% if node['role'] == "jenkins" or node['role'] == "all" then -%>
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+<% end -%>
+
 -A INPUT -j REJECT --reject-with icmp-host-prohibited
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 COMMIT
