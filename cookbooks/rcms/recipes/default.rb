@@ -129,6 +129,12 @@ execute "install-ffmpeg" do
     command "yum --enablerepo=rpmforge -y install ffmpeg ffmpeg-devel"
 end
 
+directory "/home/rcms" do
+    owner "root"
+    group "root"
+    mode 00755
+    action :create
+end
 
 cookbook_file "/home/rcms/ioncube_loader_lin_5.4.so" do
     source "ioncube_loader_lin_5.4.so"
