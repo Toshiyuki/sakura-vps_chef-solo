@@ -130,6 +130,16 @@ execute "install-ffmpeg" do
 end
 
 
+cookbook_file "/home/rcms/ioncube_loader_lin_5.4.so" do
+    source "ioncube_loader_lin_5.4.so"
+end
+
+template "/etc/php.ini" do
+    source "php.ini.erb"
+    owner "root"
+    group "root"
+    mode "0644"
+end
 
 #
 # service

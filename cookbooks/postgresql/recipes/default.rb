@@ -25,7 +25,12 @@ end
 
 user "postgres" do
     home "/home/postgres"
-    supports :manage_home=>true
+    action :create
+end
+directory "/home/postgres" do
+    owner "postgres"
+    group "postgres"
+    mode 00755
     action :create
 end
 
@@ -49,7 +54,7 @@ end
 # service
 #
 service "postgresql" do
-    action [ :enable , :restart ]
+    action [ :enable , :start ]
 end
 
 
