@@ -52,7 +52,7 @@ execute "mkdir -p /usr/local/pgsql/data/ && chown postgres:postgres /usr/local/p
 end
 
 execute "/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data/ --no-locale -E UTF8" do
-    user postgres
+    user "postgres"
     not_if { ::FileTest.exist?("/usr/local/pgsql/data/PG_VERSION") }
 end
 
