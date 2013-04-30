@@ -46,7 +46,16 @@ cookbook_file "/tmp/setting-postgresql" do
 end
 
 execute "setting-postgresql" do
-    command "sh /tmp/setting-postgresql"
+    command "cd /tmp/postgresql-9.2.4 && \cp contrib/start-scripts/linux /etc/init.d/postgresql && "
+end
+
+execute "cp /tmp/contrib/start-scripts/linux /etc/init.d/postgresql && chmod 755 /etc/init.d/postgresql" do
+    not_if { ::FileTest.exist?("/etc/init.d/postgresql") }
+end
+
+
+execute "mkdir -p /usr/local/pgsql/data/ && chown postgres:postgres /usr/local/pgsql/data/ && /sbin/service postgresql initdb" do
+    not_if { ::FileTest.exist?("/usr/local/pgsql/data/PG_VERSION") }
 end
 
 
