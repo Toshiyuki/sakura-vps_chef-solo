@@ -41,13 +41,6 @@ execute "install-postgresql" do
     command "cd /tmp/ && tar zxvf postgresql-9.2.4.tar.gz && cd postgresql-9.2.4 && ./configure && make && make install"
 end
 
-cookbook_file "/tmp/setting-postgresql" do
-    source "setting-postgresql"
-end
-
-execute "setting-postgresql" do
-    command "cd /tmp/postgresql-9.2.4 && \cp contrib/start-scripts/linux /etc/init.d/postgresql && "
-end
 
 execute "cp /tmp/contrib/start-scripts/linux /etc/init.d/postgresql && chmod 755 /etc/init.d/postgresql" do
     not_if { ::FileTest.exist?("/etc/init.d/postgresql") }
